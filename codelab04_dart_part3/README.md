@@ -2,7 +2,8 @@
 
 **1. Please complete Practicum 1 to 5, then document the results in the form of screenshots of your work along with explanations!**
 
-**Practcum 1**
+**Practicum 1**
+
 Step 1: Type or copy the following program code into the main() function.
 
 <img src="img/image.png" width="400">
@@ -19,7 +20,8 @@ Step 3: Modify the code in Step 1 into a final variable with index = 5 and defau
 
 Result: index 0 = null, index 1 = Sherly Lutfi Azkiah Sulistyawati, index 2 = 2341720241, index 3 = null, index 4 = null. final means the list cannot be reassigned to a new list (but its elements can still be modified). The data type is List<String?>.
 
-**Practcum 2**
+**Practicum 2**
+
 Step 1: Type or copy the following program code into the main() function.
 
 <img src="img/image3.png" width="400">
@@ -42,7 +44,8 @@ When executed, all {} are empty, so it looks like 3 identical rows ({}, {}, {}).
 
 After adding elements, two variables (names1 and names2) contain data, while names3 remains empty (Map).
 
-**Practcum 3**
+**Practicum 3**
+
 Step 1: Type or copy the following program code into the main() function.
 
 <img src="img/image7.png" width="400">
@@ -66,7 +69,8 @@ Then, add your Name and Student ID (NIM) into each of the variables above (gifts
 
 <img src="img/image10.png" width="400">
 
-**Practcum 4**
+**Practicum 4**
+
 Step 1: Type or copy the following program code into the main() function.
 
 <img src="img/image11.png" width="400">
@@ -110,7 +114,8 @@ Step 6: Add the following program code, then try to execute (Run) your code. Wha
 
 The code runs without error. listOfInts contains [1, 2, 3]. listOfStrings is created using Collection For, which means we can generate list elements dynamically with a loop directly inside the list declaration. Collection For makes it easier to create dynamic lists directly in a list literal, without having to write a manual loop outside.
 
-**Practcum 5**
+**Practicum 5**
+
 Step 1: Type or copy the following program code into the main() function.
 
 <img src="img/image18.png" width="400">
@@ -213,16 +218,19 @@ Returned from other functions
 Example:
 
 // Assign to variable
+
 var sayHello = () => print("Hello!");
 sayHello(); // Hello!
 
 // Pass function as parameter
+
 void execute(Function f) {
   f();
 }
 execute(sayHello);
 
 // Return function from another function
+
 Function multiplier(int x) {
   return (int y) => x * y;
 }
@@ -237,12 +245,14 @@ An anonymous function (or lambda) is a function without a name. It is often used
 Example:
 
 // Normal anonymous function
+
 var list = ['a', 'b', 'c'];
 list.forEach((item) {
   print(item);
 });
 
 // Using arrow syntax (short form)
+
 list.forEach((item) => print(item.toUpperCase()));
 
 
@@ -260,6 +270,7 @@ void outer() {
   inner();
 }
 outer(); // Output: Sherly
+
 
 
 Lexical Closure: A closure is a function that “remembers” variables from its lexical scope even after the outer function has finished executing.
@@ -291,6 +302,7 @@ Records (Dart 3 feature), List, Map, Class
 1. Using Records:
 
 // Function returns two values using a record
+
 (String, int) getStudent() {
   return ('Sherly Lutfi Azkiah Sulistyawati', 2341720241);
 }
@@ -304,6 +316,7 @@ void main() {
 2. Using List
 
 // Function returns multiple values inside a List
+
 List<dynamic> getStudentList() {
   return ['Sherly Lutfi Azkiah Sulistyawati', 2341720241];
 }
@@ -315,7 +328,9 @@ void main() {
 
 
 3. Using Map
+
 // Function returns multiple values using a Map
+
 Map<String, dynamic> getStudentMap() {
   return {
     'name': 'Sherly Lutfi Azkiah Sulistyawati',
@@ -330,6 +345,7 @@ void main() {
 
 
 4. Using Class
+
 // Define a class for student data
 class Student {
   String name;
