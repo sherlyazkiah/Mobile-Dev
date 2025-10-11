@@ -61,6 +61,27 @@ The purpose is to allow RedTextWidget to receive a text value from outside via t
 
 The first widget uses AutoSizeText, which automatically adjusts the font size so the text fits within the container width (50 px), while the yellow background helps visualize the container area. Meanwhile, the second widget uses the standard Text widget with a fixed font size, so if the text is too long, it may overflow or get cut off depending on the container’s width.
 
-**5. Explain the meaning of each parameter in the plugin based on the links in thisauto_size_text documentation!**
+**5. Explain the meaning of each parameter in the plugin based on the links in this auto_size_text documentation!**
+
+* key* → Determines how one widget replaces another in the widget tree, useful for maintaining state when rebuilding.
+* textKey → Assigns a unique key specifically for the inner Text widget.
+* style* → Defines the text’s appearance such as font, size, color, and weight.
+* minFontSize → The smallest font size allowed when resizing text. Ignored if presetFontSizes is used.
+* maxFontSize → The largest font size allowed when resizing text. Ignored if presetFontSizes is used.
+* stepGranularity → Controls how smoothly the font size adjusts; smaller values give smoother resizing but can be slower.
+* presetFontSizes → A predefined list of exact font sizes to use (must be in descending order). Overrides min/max limits.
+* group → Links multiple AutoSizeText widgets so they share the same calculated font size, ensuring visual consistency.
+* textAlign* → Sets horizontal alignment of text (e.g., left, right, center, justify).
+* textDirection* → Determines reading direction (e.g., left-to-right or right-to-left), affecting how alignment is applied.
+* locale* → Specifies the language and region for text rendering, which may change how certain characters appear.
+* softWrap* → Decides whether the text should automatically wrap to the next line when it reaches the end.
+* wrapWords → Controls whether long words are wrapped or broken when they don’t fit in a single line (default: true).
+* overflow* → Defines what happens if text doesn’t fit (e.g., show ellipsis, clip, or fade).
+* overflowReplacement → Widget shown when the text overflows (for example, a “Text too long” message).
+* textScaleFactor* → Sets the scaling factor for text size; affects min/max font sizes and presets.
+* maxLines → Limits how many lines the text can occupy; extra text is truncated if it exceeds this number.
+* semanticsLabel* → Provides an alternative label for accessibility tools like screen readers.
+
+Parameters marked with an asterisk (*) behave exactly like those in Flutter’s default Text widget.
 
 **6. Submit your lab report in the form of a GitHub repository link to your lecturer!**
