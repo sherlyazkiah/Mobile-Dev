@@ -1,21 +1,6 @@
 # master_plan
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-**Practical Assignment 1: Basic State with Model-View**
+## Practical Assignment 1: Basic State with Model-View
 
 **1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please fix them.**
 
@@ -48,3 +33,29 @@ The GIF demonstrates how the interface reacts when the user interacts with it. F
 - The dispose() method runs when the widget is removed. It cleans up resources like the ScrollController to prevent memory leaks, marking the cleanup phase of the widget’s lifecycle.
 
 **6. Submit your practicum report in the form of a commit link or GitHub repository to the agreed lecturer!**
+
+## Practical Assignment 2: InheritedWidget
+
+**1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please correct them according to the application's purpose.**
+
+**2. Explain what is meant InheritedWidgetby step 1! Why is it used InheritedNotifier?**
+
+InheritedWidget allows data sharing between widgets in the widget tree — especially from parent to children, without needing to manually pass data through every widget’s constructor.
+
+Instead of using just InheritedWidget, we use InheritedNotifier because it combines InheritedWidget with a ChangeNotifier-like mechanism (ValueNotifier). This makes it possible to automatically trigger UI updates whenever the data (Plan) changes — without manually calling setState().
+
+**3. Explain the purpose of the method in step 3 of the practicum! Why is this done?**
+
+Purpose:
+
+- completedCount: calculates how many tasks have been marked as complete.
+
+- completenessMessage: creates a simple progress summary (for example, “2 out of 5 tasks”).
+
+These methods are done to separate logic from the UI — instead of calculating progress directly inside widgets, we keep this logic in the data model (Plan). This follows the Model-View separation principle, which makes the code cleaner, reusable, and easier to maintain.
+
+**4. Capture the results of Step 9 as a GIF, then explain what you have created!**
+
+The app displays a Master Plan screen containing a list of tasks. Users can add new tasks using the + FloatingActionButton, edit task descriptions through the TextFormField, and mark tasks as complete or incomplete using a checkbox. At the bottom of the screen, a progress message such as “3 out of 6 tasks” is displayed to indicate completion status.
+
+**5. Submit your practicum report in the form of a commit link or GitHub repository to the agreed lecturer!**
