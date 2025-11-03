@@ -4,7 +4,7 @@
 
 **1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please fix them.**
 
-<img src="src/practicum1.gif">
+<img src="src/practicum1.gif" width=200>
 
 **2. Explain the purpose of step 4 in the practicum! Why is this done?**
 
@@ -26,7 +26,7 @@ Using const makes the object immutable (cannot be changed accidentally during ru
 
 **4. Capture the results of Step 9 as a GIF, then explain what you have created!**
 
-<img src="src/practicum1.gif">
+<img src="src/practicum1.gif" width=200>
 
 The GIF demonstrates how the interface reacts when the user interacts with it. For example, when we tap the + button, a new task appears. We can type a description into the TextFormField. Then, checking the box marks the task as done.
 
@@ -42,7 +42,7 @@ The GIF demonstrates how the interface reacts when the user interacts with it. F
 
 **1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please correct them according to the application's purpose.**
 
-<img src="src/practicum2.gif">
+<img src="src/practicum2.gif" width=200>
 
 **2. Explain what is meant InheritedWidgetby step 1! Why is it used InheritedNotifier?**
 
@@ -62,7 +62,7 @@ These methods are done to separate logic from the UI — instead of calculating 
 
 **4. Capture the results of Step 9 as a GIF, then explain what you have created!**
 
-<img src="src/practicum2.gif">
+<img src="src/practicum2.gif" width=200>
 
 The app displays a Master Plan screen containing a list of tasks. Users can add new tasks using the + FloatingActionButton, edit task descriptions through the TextFormField, and mark tasks as complete or incomplete using a checkbox. At the bottom of the screen, a progress message such as “3 out of 6 tasks” is displayed to indicate completion status.
 
@@ -72,7 +72,7 @@ The app displays a Master Plan screen containing a list of tasks. Users can add 
 
 **1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please correct them according to the application's purpose.**
 
-<img src="src/practicum3.gif">
+<img src="src/practicum3.gif" width=200>
 
 In this practical, we created a Flutter app that manages state across multiple screens using a shared provider (InheritedNotifier/ChangeNotifier). The project includes two main screens — PlanCreatorScreen and PlanScreen — that both access and modify the same state data.
 
@@ -110,7 +110,7 @@ Right side (green) shows the structure after navigation:
 
 **3. Capture the results of Step 14 as a GIF, then explain what you have created!**
 
-<img src="src/practicum3.gif">
+<img src="src/practicum3.gif" width=200>
 
 The GIF display how a user can add a task on the creator screen, navigate to the plan screen, and see the updated progress message like “2 out of 5 tasks completed.”
 
