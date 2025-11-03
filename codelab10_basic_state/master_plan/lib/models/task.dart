@@ -6,4 +6,11 @@ class Task {
     this.complete = false,
     this.description = '',
   });
+
+  Task copyWith({String? description, bool? complete}) {
+    return Task(
+      description: description ?? this.description,
+      complete: complete ?? this.complete,
+    );
+  }
 }

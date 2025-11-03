@@ -4,6 +4,8 @@
 
 **1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please fix them.**
 
+<img src="src/practicum1.gif">
+
 **2. Explain the purpose of step 4 in the practicum! Why is this done?**
 
 This step is done to separates the data (model) from the user interface (view), allowing for a clear structure and easier maintenance. By doing this, changes in the data can be managed efficiently without directly affecting the UI components. This is a fundamental principle of the Model-View pattern, ensuring better organization and scalability of the application.
@@ -24,6 +26,8 @@ Using const makes the object immutable (cannot be changed accidentally during ru
 
 **4. Capture the results of Step 9 as a GIF, then explain what you have created!**
 
+<img src="src/practicum1.gif">
+
 The GIF demonstrates how the interface reacts when the user interacts with it. For example, when we tap the + button, a new task appears. We can type a description into the TextFormField. Then, checking the box marks the task as done.
 
 **5. What is the use of the methods in Steps 11 and 13 in the *lifecycle state*?**
@@ -37,6 +41,8 @@ The GIF demonstrates how the interface reacts when the user interacts with it. F
 ## Practical Assignment 2: InheritedWidget
 
 **1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please correct them according to the application's purpose.**
+
+<img src="src/practicum2.gif">
 
 **2. Explain what is meant InheritedWidgetby step 1! Why is it used InheritedNotifier?**
 
@@ -56,6 +62,56 @@ These methods are done to separate logic from the UI — instead of calculating 
 
 **4. Capture the results of Step 9 as a GIF, then explain what you have created!**
 
+<img src="src/practicum2.gif">
+
 The app displays a Master Plan screen containing a list of tasks. Users can add new tasks using the + FloatingActionButton, edit task descriptions through the TextFormField, and mark tasks as complete or incomplete using a checkbox. At the bottom of the screen, a progress message such as “3 out of 6 tasks” is displayed to indicate completion status.
 
 **5. Submit your practicum report in the form of a commit link or GitHub repository to the agreed lecturer!**
+
+## Practical Assignment 3: State on Multiple Screens
+
+**1. Complete the lab steps, then document the final results with a GIF and explanation in the file README.md! If you find any errors or issues, please correct them according to the application's purpose.**
+
+<img src="src/practicum3.gif">
+
+In this practical, we created a Flutter app that manages state across multiple screens using a shared provider (InheritedNotifier/ChangeNotifier). The project includes two main screens — PlanCreatorScreen and PlanScreen — that both access and modify the same state data.
+
+**2. Based on the Practical 3 that you have done, explain the meaning of the following diagram!**
+
+<img src="src/question2.png">
+
+The diagram illustrates the flow of state between two screens:
+
+Left side (blue) shows the structure before navigation:
+
+- MaterialApp → main app container.
+
+- PlanProvider → provides shared state for the entire widget tree.
+
+- PlanCreatorScreen → allows users to create or edit a plan.
+
+- Inside it, a Column contains:
+
+    - TextField for entering new task names.
+
+    - Expanded + ListView for displaying the current task list.
+
+Right side (green) shows the structure after navigation:
+
+- MaterialApp → still the main app container.
+
+- PlanScreen → displays the created plan.
+
+- Inside a Scaffold, a Column contains:
+
+    - Expanded + ListView to show all tasks.
+
+    - SafeArea + Text to display progress (e.g., “3 out of 6 tasks completed”).
+
+**3. Capture the results of Step 14 as a GIF, then explain what you have created!**
+
+<img src="src/practicum3.gif">
+
+The GIF display how a user can add a task on the creator screen, navigate to the plan screen, and see the updated progress message like “2 out of 5 tasks completed.”
+
+**4. Submit your practicum report in the form of a commit link or GitHub repository to the agreed lecturer!**
