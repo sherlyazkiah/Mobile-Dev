@@ -78,7 +78,7 @@ In this practical, we created a Flutter app that manages state across multiple s
 
 **2. Based on the Practical 3 that you have done, explain the meaning of the following diagram!**
 
-<img src="src/question2.png">
+<img src="src/question2.png" width=500>
 
 The diagram illustrates the flow of state between two screens:
 
@@ -95,6 +95,12 @@ Left side (blue) shows the structure before navigation:
     - TextField for entering new task names.
 
     - Expanded + ListView for displaying the current task list.
+
+Navigator Push
+
+- When the user taps a button (e.g., “View Plan”), the app navigates to a new screen using Navigator.push().
+
+- The same PlanProvider instance is passed along, so state remains consistent.
 
 Right side (green) shows the structure after navigation:
 
