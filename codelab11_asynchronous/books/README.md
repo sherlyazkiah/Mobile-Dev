@@ -61,7 +61,7 @@ In step 2, the code uses the Completer class to manually control when a Future i
 
 <img src="src\q5.gif" width="250" alt="1" />
 
-**Question 5:**
+**Question 6:**
 
 **Explain the meaning of the code in step 2!**
 
