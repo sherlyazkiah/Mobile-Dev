@@ -67,12 +67,17 @@ class FuturePageState extends State<FuturePage> {
   }
 
   Future count() async {
-    int total = 0;
-    total = await returnOneAsync();
-    total += await returnTwoAsync();
-    total += await returnThreeAsync();
+    final futures = Future.wait<int>([
+      returnOneAsync(),
+      returnTwoAsync(),
+      returnThreeAsync(),
+    ]);
+
+    final results = await futures; // Wait for all futures to finish
+    int total = results.reduce((a, b) => a + b);
+
     setState(() {
-      result = total. toString();
+      result = total.toString();
     });
   }
 
@@ -114,7 +119,7 @@ class FuturePageState extends State<FuturePage> {
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                returnFG();
+                count();
               },
             ),
             const Spacer(),

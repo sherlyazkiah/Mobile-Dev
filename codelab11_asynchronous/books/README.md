@@ -76,3 +76,15 @@ The main difference between the code in step 2 and steps 5–6 is the addition o
 <img src="src\q7.gif" width="250" alt="1" />
 
 In this step, the code uses FutureGroup to run multiple asynchronous tasks (returnOneAsync(), returnTwoAsync(), and returnThreeAsync()) in parallel instead of sequentially. By executing all Futures at the same time, the total execution time is reduced from 9 seconds to about 3 seconds. Once all Futures are completed, their results are collected into a List<int>, summed, and displayed as the total value (6). This demonstrates how parallel asynchronous execution can significantly improve performance.
+
+**Question 8:**
+
+**Explain the meaning of the difference between code steps 1 and 4!**
+
+The difference between Step 1 and Step 4 lies in how multiple asynchronous tasks are executed and waited for.
+
+In Step 1, each async method (returnOneAsync(), returnTwoAsync(), returnThreeAsync()) runs sequentially, meaning the next one starts only after the previous finishes. This makes the total runtime the sum of all durations (around 9 seconds).
+
+In Step 4, using Future.wait() (or FutureGroup) runs all three functions concurrently — they start at the same time, and the program waits until all of them complete. When all are done, their results are combined using .reduce((a, b) => a + b) and displayed on screen.
+
+<img src="src\q8.gif" width="250" alt="1" />
