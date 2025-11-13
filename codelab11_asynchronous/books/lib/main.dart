@@ -99,6 +99,11 @@ class FuturePageState extends State<FuturePage> {
     });
   }
   
+  Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception("Something terrible happened!");
+  }
+
   Future<http.Response> getData() async {
     const authority = 'www.googleapis.com';
     const path = '/books/v1/volumes/EuVvEQAAQBAJ';
@@ -119,7 +124,15 @@ class FuturePageState extends State<FuturePage> {
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                count();
+                returnError().then((value) {
+                  setState(() {
+                    result = "Success!";
+                  });
+                }).catchError((onError) {
+                  setState(() {
+                    result = onError.toString();
+                  });
+                }).whenComplete(() => print('Complete'));
               },
             ),
             const Spacer(),

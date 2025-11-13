@@ -88,3 +88,11 @@ In Step 1, each async method (returnOneAsync(), returnTwoAsync(), returnThreeAsy
 In Step 4, using Future.wait() (or FutureGroup) runs all three functions concurrently — they start at the same time, and the program waits until all of them complete. When all are done, their results are combined using .reduce((a, b) => a + b) and displayed on screen.
 
 <img src="src\q8.gif" width="250" alt="1" />
+
+# Practicum 5: Handling Error Responses in Async Code
+
+**Question 9:**
+
+<img src="src\q9.gif" width="250" alt="1" />
+
+The program demonstrates how to handle errors in asynchronous code using the then(), catchError(), and whenComplete() methods. The returnError() function is used to simulate an error by delaying execution for 2 seconds before throwing an exception. When the "GO!" button is pressed, the app calls returnError(). If the operation succeeds, the then() block updates the UI with the message “Success!”. However, since an exception is intentionally thrown, the catchError() block is triggered instead, displaying the error message on the screen. Finally, the whenComplete() block executes regardless of success or failure, printing “Complete” in the debug console. This approach helps manage asynchronous operations more effectively by clearly separating success, error, and completion states.
