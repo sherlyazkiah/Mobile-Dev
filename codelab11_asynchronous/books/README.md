@@ -60,3 +60,11 @@ After the delay, the value 6 is displayed on the screen, while the CircularProgr
 In step 2, the code uses the Completer class to manually control when a Future is completed. The late variable completer is initialized in getNumber(), which creates a Completer<int>, calls calculate(), and returns completer.future. In calculate(), a 5-second delay is simulated using Future.delayed(), and then completer.complete(42) finishes the Future with the value 42. This method is useful when more control is needed over asynchronous execution, as it allows delaying or manually completing a Future at a specific time.
 
 <img src="src\q5.gif" width="250" alt="1" />
+
+**Question 5:**
+
+**Explain the meaning of the code in step 2!**
+
+The main difference between the code in step 2 and steps 5–6 is the addition of error handling using try-catch and catchError(). In step 2, the Future always completes successfully with completer.complete(42). In steps 5–6, a try-catch block and catchError() are used to handle potential errors, ensuring the program can respond gracefully if something goes wrong during execution.
+
+<img src="src\q5.gif" width="250" alt="1" />
