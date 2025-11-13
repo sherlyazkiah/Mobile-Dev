@@ -27,3 +27,26 @@ in the browser, it displays JSON data. This means the API connection is working 
 Result:
 
 <img src="src\q3.gif" width="250" alt="1" />
+
+# Practicum 2: Using await/async to avoid callbacks
+
+**Question 4:**
+
+**Explain the meaning of the code steps 1 and 2!**
+
+<img src="src\q4s1.png" width="250" alt="1" />
+
+In step 1, three asynchronous methods are created: returnOneAsync(), returnTwoAsync(), and returnThreeAsync().
+Each of these methods uses Future.delayed() to pause execution for 3 seconds before returning the values 1, 2, and 3 respectively.
+The keywords async and await are used to handle asynchronous operations, allowing the program to wait for a task to finish before moving to the next one, while keeping the code clean and easy to read.
+
+<img src="src\q4s2.png" width="250" alt="1" />
+
+In step 2, a new method called count() is added. This method calls the three asynchronous methods sequentially using the await keyword.
+Each method is executed one after another — meaning that the second method only starts after the first one completes, and so on.
+The returned values (1, 2, and 3) are then added together to produce a total value of 6. The final result is updated on the screen using setState().
+
+<img src="src\q4.gif" width="250" alt="1" />
+
+When the GO! button is pressed, the app performs these three asynchronous operations with a total delay of approximately 9 seconds (3 seconds × 3 methods).
+After the delay, the value 6 is displayed on the screen, while the CircularProgressIndicator continues to show that the UI remains responsive during the asynchronous process.
