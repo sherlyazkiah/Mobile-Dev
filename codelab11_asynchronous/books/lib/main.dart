@@ -76,6 +76,24 @@ class FuturePageState extends State<FuturePage> {
     });
   }
 
+  void returnFG() {
+    FutureGroup<int> futureGroup = FutureGroup<int>();
+    futureGroup.add(returnOneAsync());
+    futureGroup.add(returnTwoAsync());
+    futureGroup.add(returnThreeAsync());
+    futureGroup.close();
+
+    futureGroup.future.then((List<int> value) {
+      int total = 0;
+      for (var element in value) {
+        total += element;
+      }
+      setState(() {
+        result = total.toString(); // should display "6" after 3 seconds
+      });
+    });
+  }
+  
   Future<http.Response> getData() async {
     const authority = 'www.googleapis.com';
     const path = '/books/v1/volumes/EuVvEQAAQBAJ';
@@ -96,13 +114,7 @@ class FuturePageState extends State<FuturePage> {
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                getNumber().then((value) {
-                              setState(() {
-                                result = value.toString();
-                              });
-                            }).catchError((error) {
-                                result = 'An error occurred';
-                            });
+                returnFG();
               },
             ),
             const Spacer(),

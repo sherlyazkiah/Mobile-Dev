@@ -51,7 +51,7 @@ The returned values (1, 2, and 3) are then added together to produce a total val
 When the GO! button is pressed, the app performs these three asynchronous operations with a total delay of approximately 9 seconds (3 seconds × 3 methods).
 After the delay, the value 6 is displayed on the screen, while the CircularProgressIndicator continues to show that the UI remains responsive during the asynchronous process.
 
-# Practicum 2: Using Completer in Future
+# Practicum 3: Using Completer in Future
 
 **Question 5:**
 
@@ -68,3 +68,11 @@ In step 2, the code uses the Completer class to manually control when a Future i
 The main difference between the code in step 2 and steps 5–6 is the addition of error handling using try-catch and catchError(). In step 2, the Future always completes successfully with completer.complete(42). In steps 5–6, a try-catch block and catchError() are used to handle potential errors, ensuring the program can respond gracefully if something goes wrong during execution.
 
 <img src="src\q5.gif" width="250" alt="1" />
+
+# Practicum 4: Calling Future in parallel
+
+**Question 7:**
+
+<img src="src\q7.gif" width="250" alt="1" />
+
+In this step, the code uses FutureGroup to run multiple asynchronous tasks (returnOneAsync(), returnTwoAsync(), and returnThreeAsync()) in parallel instead of sequentially. By executing all Futures at the same time, the total execution time is reduced from 9 seconds to about 3 seconds. Once all Futures are completed, their results are collected into a List<int>, summed, and displayed as the total value (6). This demonstrates how parallel asynchronous execution can significantly improve performance.
