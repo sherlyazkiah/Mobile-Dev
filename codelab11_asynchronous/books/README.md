@@ -50,3 +50,13 @@ The returned values (1, 2, and 3) are then added together to produce a total val
 
 When the GO! button is pressed, the app performs these three asynchronous operations with a total delay of approximately 9 seconds (3 seconds × 3 methods).
 After the delay, the value 6 is displayed on the screen, while the CircularProgressIndicator continues to show that the UI remains responsive during the asynchronous process.
+
+# Practicum 2: Using Completer in Future
+
+**Question 5:**
+
+**Explain the meaning of the code in step 2!**
+
+In step 2, the code uses the Completer class to manually control when a Future is completed. The late variable completer is initialized in getNumber(), which creates a Completer<int>, calls calculate(), and returns completer.future. In calculate(), a 5-second delay is simulated using Future.delayed(), and then completer.complete(42) finishes the Future with the value 42. This method is useful when more control is needed over asynchronous execution, as it allows delaying or manually completing a Future at a specific time.
+
+<img src="src\q5.gif" width="250" alt="1" />
