@@ -115,3 +115,12 @@ The key difference is in how errors are handled: step 1 relies on callback metho
 
 <img src="src\q11.png" width="250" alt="1" />
 
+<img src="src\q11.jpeg" width="250" alt="1" />
+
+**Question 12:**
+
+<img src="src\q12.gif" width="250" alt="1" />
+
+**Do you get GPS coordinates when running in a browser? Why is that?**
+
+GPS coordinates do not appear when running the app in a browser because web applications cannot access the device's native location services through the Geolocator plugin. The Geolocator package depends on platform-specific APIs from Android and iOS, which are unavailable in web environments, so the browser cannot retrieve real GPS data.
