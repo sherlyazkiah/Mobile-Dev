@@ -106,3 +106,12 @@ In step 4, the handleError() method uses try, catch, and finally with async/awai
 The key difference is in how errors are handled: step 1 relies on callback methods (then(), catchError(), whenComplete()), while step 4 uses async/await, which is cleaner and easier to read for handling asynchronous operations.
 
 <img src="src\q10.gif" width="250" alt="1" />
+
+# Practicum 6: Using Future with StatefulWidget
+
+**Question 11:**
+
+**Add your nickname to each property title as your job identity.**
+
+<img src="src\q11.png" width="250" alt="1" />
+
