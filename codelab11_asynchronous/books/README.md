@@ -143,3 +143,19 @@ There is no visible difference in the UI compared to the previous step.
 This is because the error-handling code added only displays “Something terrible happened!” if an actual error occurs during the Future's execution. If the Future completes normally without throwing an exception, the widget will still display the returned data, so the UI looks the same as before.
 
 <img src="src\q14.gif" width="250" alt="1" />
+
+# Practicum 8: Navigation route with Future Function
+
+**Question 15:**
+
+**Add your nickname to each property titleas your job identity.**
+
+<img src="src\q15.png" width="250" alt="1" />
+
+**Question 16:**
+
+**Try clicking each button, what happens? Why is that?**
+
+<img src="src\q16.gif" width="250" alt="1" />
+
+When I click any of the color buttons on the second screen, the button creates a new Color value and immediately returns it to the first screen using Navigator.pop(context, color). The first screen is still waiting for this value through the await Navigator.push(...) call, so once the color is received, it updates the background using setState(). As a result, the first screen’s background color changes to match the button I selected. This happens because each button effectively acts as a “return value” for the route, allowing the second screen to send data back to the first screen.
