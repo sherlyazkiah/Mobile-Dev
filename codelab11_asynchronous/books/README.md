@@ -124,3 +124,13 @@ The key difference is in how errors are handled: step 1 relies on callback metho
 **Do you get GPS coordinates when running in a browser? Why is that?**
 
 GPS coordinates do not appear when running the app in a browser because web applications cannot access the device's native location services through the Geolocator plugin. The Geolocator package depends on platform-specific APIs from Android and iOS, which are unavailable in web environments, so the browser cannot retrieve real GPS data.
+
+# Practicum 7: Future Management with FutureBuilder
+
+**Question 13:**
+
+**Is there a difference between the UI and the previous practicum? Why is that?**
+
+Yes, the UI behaves differently from the previous practicum because FutureBuilder automatically manages the UI states (loading, done, error) without needing setState(). It rebuilds itself whenever the Future’s state changes, making the UI more reactive and efficient. In the previous practicum, the UI depended on manual updates using setState(), while in this practicum the UI updates are handled automatically by FutureBuilder.
+
+<img src="src\q12.gif" width="250" alt="1" />
