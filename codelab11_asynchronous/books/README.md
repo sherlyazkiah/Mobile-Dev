@@ -159,3 +159,13 @@ This is because the error-handling code added only displays “Something terribl
 <img src="src\q16.gif" width="250" alt="1" />
 
 When I click any of the color buttons on the second screen, the button creates a new Color value and immediately returns it to the first screen using Navigator.pop(context, color). The first screen is still waiting for this value through the await Navigator.push(...) call, so once the color is received, it updates the background using setState(). As a result, the first screen’s background color changes to match the button I selected. This happens because each button effectively acts as a “return value” for the route, allowing the second screen to send data back to the first screen.
+
+# Practicum 9: Utilizing async/await with the Dialog Widget
+
+**Question 17:**
+
+**Try clicking each button, what happens? Why is that?**
+
+<img src="src\q17.gif" width="250" alt="1" />
+
+When I click any of the color buttons in the dialog, the selected color is returned using Navigator.pop(context, color). Because the method _showColorDialog() is async, it waits for the dialog to close, then updates the background color using setState(). As a result, the screen’s background immediately changes to the color I selected. The dialog buttons act like return values that send data back to the main screen.
