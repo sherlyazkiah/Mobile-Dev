@@ -134,3 +134,12 @@ GPS coordinates do not appear when running the app in a browser because web appl
 Yes, the UI behaves differently from the previous practicum because FutureBuilder automatically manages the UI states (loading, done, error) without needing setState(). It rebuilds itself whenever the Future’s state changes, making the UI more reactive and efficient. In the previous practicum, the UI depended on manual updates using setState(), while in this practicum the UI updates are handled automatically by FutureBuilder.
 
 <img src="src\q12.gif" width="250" alt="1" />
+
+**Question 14:**
+
+**Is there any difference in the UI compared to the previous step? Why is that?**
+
+There is no visible difference in the UI compared to the previous step.
+This is because the error-handling code added only displays “Something terrible happened!” if an actual error occurs during the Future's execution. If the Future completes normally without throwing an exception, the widget will still display the returned data, so the UI looks the same as before.
+
+<img src="src\q14.gif" width="250" alt="1" />
