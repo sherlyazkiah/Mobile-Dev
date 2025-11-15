@@ -96,3 +96,13 @@ In Step 4, using Future.wait() (or FutureGroup) runs all three functions concurr
 <img src="src\q9.gif" width="250" alt="1" />
 
 The program demonstrates how to handle errors in asynchronous code using the then(), catchError(), and whenComplete() methods. The returnError() function is used to simulate an error by delaying execution for 2 seconds before throwing an exception. When the "GO!" button is pressed, the app calls returnError(). If the operation succeeds, the then() block updates the UI with the message “Success!”. However, since an exception is intentionally thrown, the catchError() block is triggered instead, displaying the error message on the screen. Finally, the whenComplete() block executes regardless of success or failure, printing “Complete” in the debug console. This approach helps manage asynchronous operations more effectively by clearly separating success, error, and completion states.
+
+**Question 10:**
+
+**Call handleError()the method in ElevatedButton, then run it. What is the result? Explain the difference between the code in steps 1 and 4!**
+
+In step 4, the handleError() method uses try, catch, and finally with async/await to manage errors. It waits for returnError(), which throws an exception after 2 seconds. The catch block updates the result with the error message, and the finally block always prints “Complete.”
+
+The key difference is in how errors are handled: step 1 relies on callback methods (then(), catchError(), whenComplete()), while step 4 uses async/await, which is cleaner and easier to read for handling asynchronous operations.
+
+<img src="src\q10.gif" width="250" alt="1" />
