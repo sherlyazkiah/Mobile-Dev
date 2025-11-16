@@ -47,3 +47,16 @@ The GIF shows the background changing colors every second based on the generated
 - listen attaches a listener callback to the Stream. It does not block the function. The program continues running while the callback is triggered every time the stream emits a new event. This is useful when we want the stream to run in the background and react to its events asynchronously.
 
 - await for is used inside an async function to read events from a Stream sequentially. It waits for each event one at a time and blocks the function until the next event arrives. This makes the code easier to read and ensures the events are processed in order.
+
+# Practicum 2: Stream controllers and sinks
+
+**Question 6:**
+
+**Explain the meaning of the code steps 8 and 10!**
+
+Step 8 sets up the connection between the UI and the stream.
+Whenever the stream receives a new number, the UI automatically updates.
+
+Step 10 generates a random number and sends it into the stream, which the UI listens to and updates automatically.
+
+<img src="img\q6.gif" width="250" alt="1" />

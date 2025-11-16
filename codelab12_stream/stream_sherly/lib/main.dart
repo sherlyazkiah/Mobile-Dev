@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'stream.dart';
+import 'dart:async';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +30,10 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
+  int lastNumber = 0;
+  late StreamController numberStreamController;
+  late NumberStream numberStream;
+
   Color bgColor = Colors.blueGrey;
   late ColorStream colorStream;
 
@@ -36,6 +42,27 @@ class _StreamHomePageState extends State<StreamHomePage> {
     super.initState();
     colorStream = ColorStream();
     changeColor();
+
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+    
+    numberStreamController.stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    numberStreamController.close();
+    super.dispose();
+  }
+
+  void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
   }
 
   void changeColor() async {
@@ -54,6 +81,21 @@ class _StreamHomePageState extends State<StreamHomePage> {
       ),
       body: Container(
         decoration: BoxDecoration(color: bgColor),
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              lastNumber.toString(),
+              style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            ),
+            ElevatedButton(
+              onPressed: addRandomNumber,
+              child: const Text('New Random Number'),
+            ),
+          ],
+        ),
       ),
     );
   }
