@@ -37,3 +37,13 @@ The Stream.periodic(...) function creates a stream that generates data repeatedl
 <img src="img\q4.gif" width="250" alt="1" />
 
 The GIF shows the background changing colors every second based on the generated stream.
+
+**Question 5:**
+
+<img src="img\q5.gif" width="250" alt="1" />
+
+**Explain the difference between using listen and await for(step 9)!**
+
+- listen attaches a listener callback to the Stream. It does not block the function. The program continues running while the callback is triggered every time the stream emits a new event. This is useful when we want the stream to run in the background and react to its events asynchronously.
+
+- await for is used inside an async function to read events from a Stream sequentially. It waits for each event one at a time and blocks the function until the next event arrives. This makes the code easier to read and ensures the events are processed in order.
