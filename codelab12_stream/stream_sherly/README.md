@@ -65,17 +65,11 @@ Step 10 generates a random number and sends it into the stream, which the UI lis
 
 **Explain the meaning of the code steps 13 to 15!**
 
-- Step 13 – Sending an Error into the Stream
+Step 13 sends an intentional error into the stream using addError(), allowing you to test how the stream handles error events.
 
-addError() sends an intentional error into the stream to test error handling.
+Step 14 uses the onError callback to catch that error and set lastNumber = -1, ensuring the UI remains stable.
 
-- Step 14 – Handling Errors with onError
-
-The onError callback catches the error and updates lastNumber = -1 so the UI stays safe.
-
-- Step 15 – Triggering the Error
-
-Random number generation is replaced with addError() to force an error and see the handler in action.
+Step 15 replaces the random number generation with addError() so the error is triggered intentionally and you can see the error handler working.
 
 <img src="img\q7.gif" width="250" alt="1" />
 
@@ -83,16 +77,22 @@ Random number generation is replaced with addError() to force an error and see t
 
 **Explain the meaning of the code steps 1-3!**
 
-- Step 1 – Declare Transformer
+Step 1 sets up the declaration of a StreamTransformer that will be used to modify data before it reaches the UI.
 
-Create a StreamTransformer variable to prepare modifying stream data before it reaches the UI.
+Step 2 defines the transformation process, which multiplies each value by 10, replaces any error with -1, and closes the sink when finished.
 
-- Step 2 – Define Transformation
-
-The transformer multiplies each value by 10, replaces errors with -1, and closes the sink when done.
-
-- Step 3 – Apply to Stream
-
-Attach the transformer using .transform(), so the UI receives processed values instead of raw data.
+Step 3 applies the transformer to the stream using .transform(), allowing the UI to receive processed data instead of raw input.
 
 <img src="img\q8.gif" width="250" alt="1" />
+
+**Question 9:**
+
+**Explain the meaning of the code steps 2, 6 and 8!**
+
+Step 2 creates a subscription that listens to the stream. Whenever the stream emits a new value, the UI updates automatically through setState().
+
+Step 6 cancels the subscription inside dispose(). This prevents memory leaks and stops the app from listening to the stream after the page is closed.
+
+Step 8 generates a random number and sends it into the stream only if the stream is still open. If the stream is already closed, the UI shows -1 to indicate that no more data can be added.
+
+<img src="img\q9.gif" width="250" alt="1" />
