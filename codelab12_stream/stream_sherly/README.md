@@ -67,14 +67,32 @@ Step 10 generates a random number and sends it into the stream, which the UI lis
 
 - Step 13 – Sending an Error into the Stream
 
-The addError() method uses controller.sink.addError('error') to intentionally send an error event into the stream instead of normal data. This helps demonstrate how error events work in a stream.
+addError() sends an intentional error into the stream to test error handling.
 
 - Step 14 – Handling Errors with onError
 
-The .onError() callback inside listen() catches any error sent by the stream. When an error occurs, the UI updates lastNumber = -1, allowing the app to respond safely without crashing.
+The onError callback catches the error and updates lastNumber = -1 so the UI stays safe.
 
 - Step 15 – Triggering the Error
 
-The normal random number generation is replaced with numberStream.addError(). This forces the stream to emit an error, allowing you to test and observe how the error handler updates the UI.
+Random number generation is replaced with addError() to force an error and see the handler in action.
 
 <img src="img\q7.gif" width="250" alt="1" />
+
+**Question 8:**
+
+**Explain the meaning of the code steps 1-3!**
+
+- Step 1 – Declare Transformer
+
+Create a StreamTransformer variable to prepare modifying stream data before it reaches the UI.
+
+- Step 2 – Define Transformation
+
+The transformer multiplies each value by 10, replaces errors with -1, and closes the sink when done.
+
+- Step 3 – Apply to Stream
+
+Attach the transformer using .transform(), so the UI receives processed values instead of raw data.
+
+<img src="img\q8.gif" width="250" alt="1" />
