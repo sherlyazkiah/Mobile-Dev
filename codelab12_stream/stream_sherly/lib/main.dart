@@ -46,9 +46,15 @@ class _StreamHomePageState extends State<StreamHomePage> {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
     
-    numberStreamController.stream.listen((event) {
+    numberStreamController.stream.listen(
+      (event) {
+        setState(() {
+          lastNumber = event;
+        });
+      },
+    ).onError((error) {
       setState(() {
-        lastNumber = event;
+        lastNumber = -1;
       });
     });
   }
@@ -61,8 +67,9 @@ class _StreamHomePageState extends State<StreamHomePage> {
 
   void addRandomNumber() {
     Random random = Random();
-    int myNum = random.nextInt(10);
-    numberStream.addNumberToSink(myNum);
+    // int myNum = random.nextInt(10);
+    // numberStream.addNumberToSink(myNum);
+    numberStream.addError();
   }
 
   void changeColor() async {

@@ -60,3 +60,21 @@ Whenever the stream receives a new number, the UI automatically updates.
 Step 10 generates a random number and sends it into the stream, which the UI listens to and updates automatically.
 
 <img src="img\q6.gif" width="250" alt="1" />
+
+**Question 7:**
+
+**Explain the meaning of the code steps 13 to 15!**
+
+- Step 13 – Sending an Error into the Stream
+
+The addError() method uses controller.sink.addError('error') to intentionally send an error event into the stream instead of normal data. This helps demonstrate how error events work in a stream.
+
+- Step 14 – Handling Errors with onError
+
+The .onError() callback inside listen() catches any error sent by the stream. When an error occurs, the UI updates lastNumber = -1, allowing the app to respond safely without crashing.
+
+- Step 15 – Triggering the Error
+
+The normal random number generation is replaced with numberStream.addError(). This forces the stream to emit an error, allowing you to test and observe how the error handler updates the UI.
+
+<img src="img\q7.gif" width="250" alt="1" />
