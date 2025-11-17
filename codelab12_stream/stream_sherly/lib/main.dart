@@ -35,6 +35,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
   late NumberStream numberStream;
   late StreamTransformer transformer;
   late StreamSubscription subscription;
+  late StreamSubscription subscription2;
+  String values = '';
 
   Color bgColor = Colors.blueGrey;
   late ColorStream colorStream;
@@ -48,10 +50,16 @@ class _StreamHomePageState extends State<StreamHomePage> {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
     
-    Stream stream = numberStreamController.stream;
+    Stream stream = numberStreamController.stream.asBroadcastStream();
     subscription = stream.listen((event) {
       setState(() {
-        lastNumber = event;
+        values += '$event - ';
+      });
+    });
+
+    subscription2 = stream.listen((event) {
+      setState(() {
+        values += '$event - ';
       });
     });
 
@@ -111,7 +119,7 @@ class _StreamHomePageState extends State<StreamHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              lastNumber.toString(),
+              values,
               style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
             ElevatedButton(

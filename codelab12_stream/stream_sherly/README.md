@@ -73,6 +73,8 @@ Step 15 replaces the random number generation with addError() so the error is tr
 
 <img src="img\q7.gif" width="250" alt="1" />
 
+# Practicum 3: Injecting data into streams
+
 **Question 8:**
 
 **Explain the meaning of the code steps 1-3!**
@@ -85,6 +87,8 @@ Step 3 applies the transformer to the stream using .transform(), allowing the UI
 
 <img src="img\q8.gif" width="250" alt="1" />
 
+# Practicum 4: Subscribe to stream events
+
 **Question 9:**
 
 **Explain the meaning of the code steps 2, 6 and 8!**
@@ -96,3 +100,21 @@ Step 6 cancels the subscription inside dispose(). This prevents memory leaks and
 Step 8 generates a random number and sends it into the stream only if the stream is still open. If the stream is already closed, the UI shows -1 to indicate that no more data can be added.
 
 <img src="img\q9.gif" width="250" alt="1" />
+
+# Practicum 5: Multiple stream subscriptions
+
+**Question 10:**
+
+**Explain why this error could occur?**
+
+Because the stream is a single-subscription stream. A normal stream can only have one listener. When a second subscription is added, Flutter throws: “Bad state: Stream has already been listened to.”
+
+<img src="img\q10.jpeg" width="250" alt="1" />
+
+**Question 11:**
+
+**Explain why this could happen?**
+
+A broadcast stream allows multiple listeners, so both subscription and subscription2 receive the same events. Each event is processed two times, causing the text to update twice for every button press.
+
+<img src="img\q11.gif" width="250" alt="1" />
