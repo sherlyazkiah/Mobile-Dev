@@ -29,6 +29,8 @@ The application successfully handled corrupted JSON data by implementing:
 
 No runtime errors occurred, and missing data is now replaced with default values such as "No name" or empty strings.
 
+# Practicum 3: Handling JSON errors
+
 **Question 5:**
 
 **Explain the meaning of safer and more maintainable code!**
@@ -38,3 +40,9 @@ No runtime errors occurred, and missing data is now replaced with default values
 **More maintainable code** means the program is easier to update and manage in the future. If a JSON key name needs to be changed, it only needs to be updated in one place (the constant), and the change will apply throughout the code automatically.
 
 <img src="img\q5.jpeg" width="250" alt="1" />
+
+# Practicum 4: SharedPreferences
+
+**Question 6:**
+
+<img src="img\q6.gif" width="250" alt="1" />
