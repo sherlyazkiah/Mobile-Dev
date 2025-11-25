@@ -46,3 +46,9 @@ No runtime errors occurred, and missing data is now replaced with default values
 **Question 6:**
 
 <img src="img\q6.gif" width="250" alt="1" />
+
+# Practicum 5: Access the filesystem with path_provider
+
+**Question 7:**
+
+<img src="img\q7.jpeg" width="250" alt="1" />

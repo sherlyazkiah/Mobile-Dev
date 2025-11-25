@@ -2,6 +2,7 @@ import 'dart:convert';
 import './model/pizza.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String documentsPath = '';
+  String tempPath = '';
+
+  Future getPaths() async {
+    final docDir = await getApplicationDocumentsDirectory();
+    final tempDir = await getTemporaryDirectory();
+    setState(() {
+      documentsPath = docDir.path;
+      tempPath = tempDir.path;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getPaths();
+  }
+
   int appCounter = 0;
 
   Future readAndWritePreferences() async {
@@ -40,12 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       appCounter = appCounter;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    readAndWritePreferences();
   }
 
   Future deletePreference() async {
@@ -84,20 +97,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Shared Preferences - Sherly')),
-      body: Center(
+      appBar: AppBar(
+        title: const Text('Path Provider - Sherly'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              'You have opened the app $appCounter times.',
-            ),
-            ElevatedButton(
-              onPressed: () {
-                deletePreference();
-              },
-              child: const Text('Reset counter'),
-            ),
+            Text('Doc path: $documentsPath'),
+            Text('Temp path: $tempPath'),
           ],
         ),
       ),
