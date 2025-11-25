@@ -1,3 +1,9 @@
+const keyId = 'id';
+const keyName = 'pizzaName';
+const keyDescription = 'description';
+const keyPrice = 'price';
+const keyImage = 'imageUrl';
+
 class Pizza {
   final int id;
   final String pizzaName;
@@ -13,37 +19,24 @@ class Pizza {
     required this.imageUrl,
   });
 
-  factory Pizza.fromJson(Map<String, dynamic> json) {
-    return Pizza(
-      // Step 3 - Handle String to int + null
-      id: int.tryParse(json['id'].toString()) ?? 0,
-
-      // Step 6 & 10 - Avoid null & ensure string
-      pizzaName: json['pizzaName'] != null
-          ? json['pizzaName'].toString()
-          : 'No name',
-
-      description: json['description'] != null
-          ? json['description'].toString()
-          : '',
-
-      // Step 8 - Handle String to double + null
-      price: double.tryParse(json['price'].toString()) ?? 0.0,
-
-      // Step 5 & 6 - Avoid null
-      imageUrl: json['imageUrl'] != null
-          ? json['imageUrl'].toString()
-          : '',
-    );
-  }
+  Pizza.fromJson(Map<String, dynamic> json)
+      : id = int.tryParse(json[keyId].toString()) ?? 0,
+        pizzaName = json[keyName] != null
+            ? json[keyName].toString()
+            : 'No name',
+        description = json[keyDescription] != null
+            ? json[keyDescription].toString()
+            : '',
+        price = double.tryParse(json[keyPrice].toString()) ?? 0,
+        imageUrl = json[keyImage] ?? '';
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
-      'pizzaName': pizzaName,
-      'description': description,
-      'price': price,
-      'imageUrl': imageUrl,
+      keyId: id,
+      keyName: pizzaName,
+      keyDescription: description,
+      keyPrice: price,
+      keyImage: imageUrl,
     };
   }
 }
