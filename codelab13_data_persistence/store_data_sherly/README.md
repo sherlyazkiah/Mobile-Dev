@@ -11,3 +11,7 @@
 **Question 2:**
 
 <img src="img\q2.jpeg" width="250" alt="1" />
+
+**Question 3:**
+
+<img src="img\q3.jpeg" width="250" alt="1" />
