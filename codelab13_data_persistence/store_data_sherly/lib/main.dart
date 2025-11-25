@@ -4,6 +4,7 @@ import './model/pizza.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final pwdController = TextEditingController();
+  String myPass = '';
+  final storage = const FlutterSecureStorage();
+  final String myKey = 'myPass';
+
+  Future writeToSecureStorage() async {
+    await storage.write(key: myKey, value: pwdController.text);
+  }
+
+  Future<String> readFromSecureStorage() async {
+    String secret = await storage.read(key: myKey) ?? '';
+    return secret;
+  }
+  
+  @override
+  void initState() {
+    getPaths().then((_) {
+      myFile = File('$documentsPath/pizza.txt');
+      writeFile();
+    });
+    super.initState();
+  }
+
   late File myFile;
   String fileText = '';
   
@@ -54,15 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
       documentsPath = docDir.path;
       tempPath = tempDir.path;
     });
-  }
-
-  @override
-  void initState() {
-    getPaths().then((_) {
-      myFile = File('$documentsPath/pizza.txt');
-      writeFile();
-    });
-    super.initState();
   }
 
   Future<bool> readFile() async {
@@ -135,13 +150,26 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('Doc path: $documentsPath'),
-            Text('Temp path: $tempPath'),
-            ElevatedButton(
-              onPressed: () => readFile(),
-              child: const Text('Read File'),
+            TextField(
+              controller: pwdController,
             ),
-            Text(fileText),
+            ElevatedButton(
+              onPressed: writeToSecureStorage,
+              child: const Text('Save Value'),
+            ),
+
+            ElevatedButton(
+              child: const Text('Read Value'),
+              onPressed: () {
+                readFromSecureStorage().then((value) {
+                  setState(() {
+                    myPass = value;
+                  });
+                });
+              },
+            ),
+
+            Text("Saved Value: $myPass"),
           ],
         ),
       ),

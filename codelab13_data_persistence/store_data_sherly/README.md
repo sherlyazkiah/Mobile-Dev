@@ -59,8 +59,14 @@ No runtime errors occurred, and missing data is now replaced with default values
 
 **Explain the meaning of the code in steps 3 and 7!**
 
-- Step 3 (writeFile): myFile.writeAsString(...) creates/opens the file at the given path and writes the text into it. The method is async and uses await so it doesn’t block the UI, while try/catch prevents crashes if an error happens (e.g., permission or storage issues). Returning true/false indicates success or failure.
+Step 3 (writeFile): myFile.writeAsString(...) creates/opens the file at the given path and writes the text into it. The method is async and uses await so it doesn’t block the UI, while try/catch prevents crashes if an error happens (e.g., permission or storage issues). Returning true/false indicates success or failure.
 
-- Step 7 (readFile & Read button): myFile.readAsString() reads the file contents asynchronously. After reading, setState() saves the text into fileText and refreshes the UI so the content appears on screen. If an error occurs (e.g., file not found), it is handled safely without crashing the app.
+Step 7 (readFile & Read button): myFile.readAsString() reads the file contents asynchronously. After reading, setState() saves the text into fileText and refreshes the UI so the content appears on screen. If an error occurs (e.g., file not found), it is handled safely without crashing the app.
 
 <img src="img\q8.gif" width="250" alt="1" />
+
+# Practicum 7: Storing data with encryption/decryption
+
+**Question 9:**
+
+<img src="img\q9.gif" width="250" alt="1" />
