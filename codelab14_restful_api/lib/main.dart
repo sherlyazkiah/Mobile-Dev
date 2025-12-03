@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         future: callPizzas(),
         builder: (context, AsyncSnapshot<List<Pizza>> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Center(child: Text('Something went wrong'));
           }
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -54,19 +54,44 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (BuildContext context, int index) {
               Pizza p = snapshot.data![index];
               return ListTile(
-                title: Text(p.pizzaName ?? "No name"),
+                title: Text(p.pizzaName),
                 subtitle: Text("${p.description} - € ${p.price}"),
+
+                // ✔ tap untuk EDIT pizza
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PizzaDetailScreen(
+                        pizza: p,
+                        isNew: false,
+                      ),
+                    ),
+                  );
+                },
               );
             },
           );
         },
       ),
+
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const PizzaDetailScreen()),
+            MaterialPageRoute(
+              builder: (context) => PizzaDetailScreen(
+                pizza: Pizza(
+                  id: 0,
+                  pizzaName: '',
+                  description: '',
+                  price: 0,
+                  imageUrl: '',
+                ),
+                isNew: true,
+              ),
+            ),
           );
         },
       ),

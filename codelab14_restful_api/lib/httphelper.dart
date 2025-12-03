@@ -42,4 +42,16 @@ class HttpHelper {
     );
     return r.body;
   }
+
+  // Put for update pizza
+  Future<String> putPizza(Pizza pizza) async {
+    const putPath = '/pizza';
+    String put = json.encode(pizza.toJson());
+    Uri url = Uri.https(authority, putPath);
+    http.Response r = await http.put(
+      url,
+      body: put,
+    );
+    return r.body;
+  }
 }

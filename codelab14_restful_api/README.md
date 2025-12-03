@@ -21,3 +21,13 @@
 **Add new fields in JSON or POST to Wiremock!**
 
 <img src="img\q2.gif" width="250" alt="1" />
+
+# Practicum 3: Updating Data in Web Service (PUT)
+
+<img src="img\q3put.png" width="400" alt="1" />
+
+**Question 3:**
+
+**Change one of the data with your Name and NIM, then see the results in Wiremock.**
+
+<img src="img\q3.gif" width="250" alt="1" />
