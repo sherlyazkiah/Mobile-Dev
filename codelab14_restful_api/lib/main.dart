@@ -1,6 +1,7 @@
 import './model/pizza.dart';
 import 'package:flutter/material.dart';
 import 'httphelper.dart';
+import 'pizza_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,14 +51,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
           return ListView.builder(
             itemCount: snapshot.data!.length,
-            itemBuilder: (context, position) {
+            itemBuilder: (BuildContext context, int index) {
+              Pizza p = snapshot.data![index];
               return ListTile(
-                title: Text(snapshot.data![position].pizzaName),
-                subtitle: Text(
-                  '${snapshot.data![position].description} - € ${snapshot.data![position].price}',
-                ),
+                title: Text(p.pizzaName ?? "No name"),
+                subtitle: Text("${p.description} - € ${p.price}"),
               );
             },
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PizzaDetailScreen()),
           );
         },
       ),

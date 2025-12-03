@@ -5,30 +5,21 @@ const keyPrice = 'price';
 const keyImage = 'imageUrl';
 
 class Pizza {
-  final int id;
-  final String pizzaName;
-  final String description;
-  final double price;
-  final String imageUrl;
+  int? id;
+  String? pizzaName;
+  String? description;
+  double? price;
+  String? imageUrl;
 
-  Pizza({
-    required this.id,
-    required this.pizzaName,
-    required this.description,
-    required this.price,
-    required this.imageUrl,
-  });
+  Pizza();
 
-  Pizza.fromJson(Map<String, dynamic> json)
-      : id = int.tryParse(json[keyId].toString()) ?? 0,
-        pizzaName = json[keyName] != null
-            ? json[keyName].toString()
-            : 'No name',
-        description = json[keyDescription] != null
-            ? json[keyDescription].toString()
-            : '',
-        price = double.tryParse(json[keyPrice].toString()) ?? 0,
-        imageUrl = json[keyImage] ?? '';
+  Pizza.fromJson(Map<String, dynamic> json) {
+    id = int.tryParse(json[keyId].toString()) ?? 0;
+    pizzaName = json[keyName]?.toString() ?? 'No name';
+    description = json[keyDescription]?.toString() ?? '';
+    price = double.tryParse(json[keyPrice].toString()) ?? 0;
+    imageUrl = json[keyImage]?.toString() ?? '';
+  }
 
   Map<String, dynamic> toJson() {
     return {
