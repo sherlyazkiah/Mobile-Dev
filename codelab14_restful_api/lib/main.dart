@@ -30,9 +30,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late Future<List<Pizza>> pizzas;
+
+  @override
+  void initState() {
+    super.initState();
+    pizzas = callPizzas();
+  }
+
   Future<List<Pizza>> callPizzas() async {
     HttpHelper helper = HttpHelper();
     return await helper.getPizzaList();
+  }
+
+  void refreshList() {
+    setState(() {
+      pizzas = callPizzas();
+    });
   }
 
   @override
@@ -40,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(title: const Text('JSON - Sherly')),
       body: FutureBuilder(
-        future: callPizzas(),
+        future: pizzas,
         builder: (context, AsyncSnapshot<List<Pizza>> snapshot) {
           if (snapshot.hasError) {
             return const Center(child: Text('Something went wrong'));
@@ -49,26 +63,54 @@ class _MyHomePageState extends State<MyHomePage> {
             return const Center(child: CircularProgressIndicator());
           }
 
-          return ListView.builder(
-            itemCount: snapshot.data!.length,
-            itemBuilder: (BuildContext context, int index) {
-              Pizza p = snapshot.data![index];
-              return ListTile(
-                title: Text(p.pizzaName),
-                subtitle: Text("${p.description} - € ${p.price}"),
+          List<Pizza> pizzaList = snapshot.data!;
 
-                // ✔ tap untuk EDIT pizza
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PizzaDetailScreen(
-                        pizza: p,
-                        isNew: false,
-                      ),
-                    ),
+          return ListView.builder(
+            itemCount: pizzaList.length,
+            itemBuilder: (BuildContext context, int index) {
+              Pizza p = pizzaList[index];
+
+              return Dismissible(
+                key: Key(p.id.toString()),
+                direction: DismissDirection.endToStart,
+
+                onDismissed: (direction) async {
+                  HttpHelper helper = HttpHelper();
+
+                  setState(() {
+                    pizzaList.removeAt(index);
+                  });
+
+                  await helper.deletePizza(p.id);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("${p.pizzaName} deleted")),
                   );
                 },
+
+                background: Container(
+                  color: Colors.red,
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 20),
+                  child: const Icon(Icons.delete, color: Colors.white, size: 30),
+                ),
+
+                child: ListTile(
+                  title: Text(p.pizzaName),
+                  subtitle: Text("${p.description} - € ${p.price}"),
+
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PizzaDetailScreen(
+                          pizza: p,
+                          isNew: false,
+                        ),
+                      ),
+                    ).then((value) => refreshList());
+                  },
+                ),
               );
             },
           );
@@ -92,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 isNew: true,
               ),
             ),
-          );
+          ).then((value) => refreshList());
         },
       ),
     );

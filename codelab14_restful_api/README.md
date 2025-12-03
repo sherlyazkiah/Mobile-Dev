@@ -31,3 +31,13 @@
 **Change one of the data with your Name and NIM, then see the results in Wiremock.**
 
 <img src="img\q3.gif" width="250" alt="1" />
+
+# Practicum 4: Deleting Data from Web Service (DELETE)
+
+<img src="img\q4delete.png" width="400" alt="1" />
+
+**Question 4:**
+
+**Capture your application results as a GIF.**
+
+<img src="img\q4.gif" width="250" alt="1" />
