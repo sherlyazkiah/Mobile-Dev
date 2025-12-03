@@ -1,16 +1,11 @@
-# codelab14_restful_api
+# Codelab 14 - RESTful API
 
-A new Flutter project.
+# Practicum 1: Creating a Mock API service
 
-## Getting Started
+**Question 1:**
 
-This project is a starting point for a Flutter application.
+**Add your nickname to title the app as an identity for your work.**
 
-A few resources to get you started if this is your first Flutter project:
+<img src="img\q1.png" width="250" alt="1" />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="img\q1.jpeg" width="250" alt="1" />
